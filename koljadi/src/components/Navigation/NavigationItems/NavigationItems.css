@@ -1,0 +1,9 @@
+.NavigationItems.Mobile{
+    padding: 0;
+    /* background: chocolate; */
+    list-style: none;
+    
+}
+.NavigationItems.Mobile a{
+    text-decoration: none;
+}

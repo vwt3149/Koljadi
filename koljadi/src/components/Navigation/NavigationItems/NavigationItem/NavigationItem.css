@@ -1,0 +1,23 @@
+.NavigationItem {
+    box-sizing: border-box;
+    font-size: 18px;
+    font-weight: bolder;
+    text-decoration: none;
+    /* background-color: #fff; */
+    width: 100%;
+    text-align: center;
+    margin: 40% 0;
+    padding: 10px;
+    transition: all .6s ease;
+}
+
+.NavigationItem a{
+    color: black;
+}
+
+.NavigationItem:hover{
+    background-color: rgb(59, 59, 59);
+}
+.NavigationItem:hover a{
+    color: rgb(189, 189, 189);
+    }

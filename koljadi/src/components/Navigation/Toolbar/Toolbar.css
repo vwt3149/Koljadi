@@ -1,0 +1,25 @@
+.Toolbar{
+    box-sizing: border-box;
+    background:#ecf0f1;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+    display: flex;
+    justify-content:space-between;
+    height: 100px;
+    width: 100%;
+    padding: 0 20px;
+   
+    
+    
+}
+
+.HeadingLink{
+    display:flex ;
+    flex-flow: row;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
+    color: black;
+    
+}
+
