@@ -14,13 +14,14 @@ const koljadi = (props) => {
             id: "precistajaDjiva"
             }
         }
-        const koljada = Object.keys(props.koljadi).map( val => {
+        const koljada = Object.keys(props.koljadi).map( (val, i) => {
+            
             return <Koljada 
+                    delay={i}
                     key={props.koljadi[val].title}
                     title={props.koljadi[val].title}
-                    lyrics={props.koljadi[val].lyric}/>
-
-           
+                    lyrics={props.koljadi[val].lyric}
+                    />
         })
         console.log(props.koljadi);
 
@@ -44,10 +45,10 @@ const koljadi = (props) => {
         // }
         // console.log(d);
     return(
-        <Aux>
+            <div className='Koljadi'>
             {koljada}
-            {/* <Koljada title={lyrics.NocNadViflejem.id} lyrics={lyrics.NocNadViflejem.Lyrics}/> */}
-        </Aux>
+
+            </div>
     );
 }
 

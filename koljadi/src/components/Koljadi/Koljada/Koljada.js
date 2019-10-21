@@ -26,7 +26,7 @@ Cлaвa Бoгy!
     }
 
     return(
-        <div className='Koljada'>
+        <div className='Koljada' id='Koljada' style={{animationDelay: `.${props.delay}s`}} >
             <h3>{props.title}</h3>
             <li>
                 <p>
@@ -39,4 +39,4 @@ Cлaвa Бoгy!
     );
 }
 
-export default koljada
+export default koljada;

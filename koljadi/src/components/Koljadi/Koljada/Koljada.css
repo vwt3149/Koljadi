@@ -6,7 +6,18 @@
     border-radius: 3px;
     padding: 15px;
     margin: 40px 10px;
+    animation-name: slide;
+    animation-duration: .6s;
+    animation-delay: 0s;
+    opacity: 0;
+    animation-fill-mode: forwards;  
+
   
+}
+
+.Koljada:nth-child(odd){
+    border-right: 30px solid #f1c40f;
+
 }
 
 .Koljada h3{
@@ -31,4 +42,15 @@
     color: white;
     border-right: 30px solid #216592;
 
+}
+
+@keyframes slide{
+    from{
+        transform: translateX(+100%);
+        opacity: 0;
+    }
+    to{
+        transform: translateX(0);
+        opacity: 1;
+    }
 }

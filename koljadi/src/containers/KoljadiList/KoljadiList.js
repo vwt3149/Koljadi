@@ -31,7 +31,9 @@ class KoljadiList extends Component{
     render(){
         let koljadi = <Spinner/>;
         if (this.state.koljadi !== null && !this.state.isLoading) {
-            koljadi = <Koljadi koljadi={this.state.koljadi}/>
+            koljadi = <Koljadi 
+                        koljadi={this.state.koljadi}
+                        />
         }
     
         return(

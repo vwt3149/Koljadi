@@ -5,8 +5,8 @@
     width: 200px;
     height: 100%;
     background-color: #7f8c8d;
-    z-index: 999;
-    transition: transform .4s ease-out;
+    z-index: 9999;
+    transition: all .4s ease-out;
     display: flex;
     flex-flow: column;
     justify-content: center;
@@ -19,5 +19,5 @@
 
 .Close{
     transform: translateX(-100%);
-    transition: transform .6s ease-in;
+    transition: transform .2s ease-in;
 }
