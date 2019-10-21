@@ -7,7 +7,7 @@ const navigationItem = (props) =>{
     // const delay = setTimeout( () => props.closeOnClick , 1000)
     return(
         <li className='NavigationItem' onClick={props.closeOnClick}>
-            <NavLink to={props.link}>
+            <NavLink activeClassName='NavigationItemActive' to={props.link}>
                 {props.children}
             </NavLink>
         </li>

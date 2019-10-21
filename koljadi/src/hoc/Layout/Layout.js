@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import Aux from '../Aux';
 import Toolbar from '../../components/Navigation/Toolbar/Toolbar';
 import SideDrawer from '../../components/Navigation/SideDrawer/SideDrawer';
+import './Layout.css'
 
 class Layout extends Component{
     state = {
@@ -17,7 +17,7 @@ class Layout extends Component{
     }
     render(){
         return (
-            <Aux>
+            <div className='Layout'>
                 <Toolbar
                     isOpen = {this.state.showSideDrawer}
                     sideDrawerOpen={this.state.showSideDrawer? this.closeSideDrawerHandler :this.OpenSideDrawerHandler}
@@ -32,7 +32,7 @@ class Layout extends Component{
                     <h1>{this.props.heading}</h1>
                     {this.props.children}
                 </main>
-            </Aux>
+            </div>
                
            
         );

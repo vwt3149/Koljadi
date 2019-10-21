@@ -15,7 +15,7 @@
   
 }
 
-.Koljada:nth-child(odd){
+.Koljada:nth-child(even){
     border-right: 30px solid #f1c40f;
 
 }
@@ -37,6 +37,9 @@
     letter-spacing: 1px;
     /* font-weight: 400; */
 }
+
+
+
 .KoljadaDark{
     background-color: rgb(27, 27, 27);
     color: white;

@@ -1,0 +1,26 @@
+.Zmist{
+    box-shadow: 0 5px 10px rgb(126, 126, 126);
+    border-radius: 3px;
+    width: 80%;
+    box-sizing: border-box;
+    padding: 15px 15px 50px 15px;
+    margin-bottom: 100px;
+    background-color: #ecf0f1;
+   
+    
+}
+
+.Zmist ul{
+    padding: 0;
+    list-style: none;
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+    margin: 0 auto;
+    
+}
+
+.Zmist h3{
+    font-size:30px;
+    border-bottom:1px solid black;
+}

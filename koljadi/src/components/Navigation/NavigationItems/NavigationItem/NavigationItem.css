@@ -3,19 +3,29 @@
     font-size: 18px;
     font-weight: bolder;
     text-decoration: none;
+    display: flex;
+    flex-flow: column;
+   
     /* background-color: #fff; */
     width: 100%;
     text-align: center;
     margin: 40% 0;
-    padding: 10px;
+    /* padding: 10px; */
     transition: all .6s ease;
 }
 
 .NavigationItem a{
     color: black;
+    padding: 10px;
+    /* background-color: #ddd; */
 }
 
-.NavigationItem:hover{
+.NavigationItemActive{
+    color: #2980b9 !important;
+    background-color: rgb(77, 77, 77);
+}
+
+.NavigationItem a:hover{
     background-color: rgb(59, 59, 59);
 }
 .NavigationItem:hover a{

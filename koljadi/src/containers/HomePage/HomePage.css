@@ -1,0 +1,14 @@
+@import url('https://fonts.googleapis.com/css?family=Great+Vibes&display=swap');
+
+.HomePage{
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+    
+}
+
+.HomePageHeader{
+    font-family: 'Great Vibes', cursive;
+    text-align: center;
+    font-size: 35px;
+}
