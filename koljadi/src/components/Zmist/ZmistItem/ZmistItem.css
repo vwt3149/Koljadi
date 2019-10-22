@@ -1,7 +1,7 @@
 .ZmistItem {
     cursor: pointer;
     display: flex;
-    box-shadow: 0px 3px 7px 2px rgb(141, 141, 141);
+    box-shadow: 0px 3px 2px .1px rgb(141, 141, 141);
     background-color: #fff;
     border-radius: 3px;
     width: 80%;
@@ -9,3 +9,16 @@
     padding: 4px 10px;
     margin: 10px 0;
 }
+
+.ZmistItem:hover ,
+.ZmistItem:active{
+    background-color:#95a5a6 ;
+}
+.ZmistItem:hover p,
+.ZmistItem:active p{
+    font-weight: bolder;
+    color: white;
+
+    text-shadow:0px 1px 1px black
+}
+

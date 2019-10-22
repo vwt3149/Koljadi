@@ -11,7 +11,7 @@
     animation-delay: 0s;
     opacity: 0;
     animation-fill-mode: forwards;  
-
+    scroll-behavior: smooth;
   
 }
 

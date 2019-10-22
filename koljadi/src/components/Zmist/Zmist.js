@@ -8,9 +8,12 @@ const zmist = (props) => {
         let zmistItems = '';
         if (props.koljadi !== null) {
             zmistItems =  Object.keys(props.koljadi).map( (val, ind) => {
-             return  <ZmistItem title={`${ind + 1}. ${props.koljadi[val].title}`}/>
+             return  <ZmistItem
+                        id={val}
+                        clicked={props.clicked}
+                        key={props.koljadi[val].title}
+                        title={`${ind + 1}. ${props.koljadi[val].title}`}/>
            })
-           
         }
     
 

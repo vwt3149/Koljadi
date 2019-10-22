@@ -26,13 +26,12 @@ const koljada = (props) => {
 //     }
     
     return(
-        <div className='Koljada' id='Koljada' style={{animationDelay: `.${props.delay}s`}} >
+        <div className='Koljada' id={props.id}  style={{animationDelay: `.${props.delay}s`}} >
             <h3>{props.title}</h3>
-            <li>
+            <li >
                 <p>
                    {props.lyrics}
                 </p>
-               
             </li>
         </div>
        

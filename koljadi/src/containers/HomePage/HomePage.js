@@ -15,6 +15,7 @@ class HomePage extends Component{
     }
 
    async componentDidMount(){
+        window.location.hash = '';
         this.setState({isLoading:true})
         try {
             const response = await axios.get('/lyrics.json');
@@ -30,12 +31,21 @@ class HomePage extends Component{
         }
     }
 
+    zmistClickHandler = (event ) =>{
+        this.props.history.push({
+            pathname:`/koljadi`,
+            state:event.target.id
+        });
+    }
+
 
     render(){
 
         let zmist = <Spinner/>;
         if (this.state.koljadi !== null && !this.state.isLoading) {
-            zmist = <Zmist koljadi={this.state.koljadi}/>
+            zmist = <Zmist
+                    clicked={  this.zmistClickHandler}
+                    koljadi={this.state.koljadi}/>
         }
 
         return(
