@@ -26,25 +26,25 @@ class KoljadiList extends Component{
                 console.log(error);
             }
             
+            
+            //Scrolling to Koljada automatically
+            if (this.props.location.state.koljadaID && this.state.koljadi) {
+                const id = this.props.location.state.koljadaID
+                const timingOfScroll = Number(`${this.props.location.state.indexOfKoljadi + 1}00`) ;
+                if (  document.getElementById(id)) {
+                    console.log(this.props)
+                    console.log(timingOfScroll)
+                    setTimeout(() => {
+                        document.getElementById(id).scrollIntoView()
+                    }, timingOfScroll );
+                }
+            }
+            
         }
        
         
         
     render(){
-       setTimeout(() => {
-           //Scrolling to Koljada automatically
-            if(this.props.location.state && koljadi){
-                // console.log(this.props.location.state,'[STATE]')
-                // console.log(koljadi,'[KOLJADI]')
-                const id = Array.from(this.props.location.state).filter((val) => val !== '#')
-                const res = id.join('');
-
-                if ( document.getElementById(res)) {
-                    document.getElementById(res).scrollIntoView()
-                }
-            }
-        },800);
-
         let koljadi = <Spinner/>;
         if (this.state.koljadi !== null && !this.state.isLoading) {
             
@@ -54,7 +54,6 @@ class KoljadiList extends Component{
                         /> )             
         }
 
-       
         return(
             <Aux>
                 {koljadi}

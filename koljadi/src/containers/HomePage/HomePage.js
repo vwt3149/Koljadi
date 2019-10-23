@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 
+import Typed from 'typed.js'
 import Zmist from '../../components/Zmist/Zmist';
 import axios from '../../axios/axios';
 import Spinner from '../../components//UI/Spinner/Spinner';
@@ -29,13 +30,30 @@ class HomePage extends Component{
             this.setState({isLoading: false})
             console.log(error);
         }
-    }
 
-    zmistClickHandler = (event ) =>{
+        const options = {
+            strings: ["RuthenianFinestKoljadi"],
+            typeSpeed: 80,
+            showCursor: false,
+          };
+          
+          this.typed = new Typed('.HomePageHeader', options);
+
+
+    }
+    
+    zmistClickHandler = (event) =>{
+        console.log(event.target.id)
+        // console.log( Object.getOwnPropertyNames(this.state.koljadi), '[Reci]')
         this.props.history.push({
             pathname:`/koljadi`,
-            state:event.target.id
+            state:{
+                koljadaID: event.target.id,
+                indexOfKoljadi: Object.getOwnPropertyNames(this.state.koljadi).indexOf(event.target.id)
+            }
+            
         });
+
     }
 
 
@@ -47,10 +65,12 @@ class HomePage extends Component{
                     clicked={  this.zmistClickHandler}
                     koljadi={this.state.koljadi}/>
         }
+        
+        
 
         return(
            <main className='HomePage'>
-               <h3 className='HomePageHeader'>Ruthenian Finest Koljadi</h3>
+               <h3 className='HomePageHeader'></h3>
                {zmist}
            </main>
            
