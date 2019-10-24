@@ -39,7 +39,7 @@ class HomePage extends Component{
           
           this.typed = new Typed('.HomePageHeader', options);
 
-
+          this.screen = window.screen.width
     }
     
     zmistClickHandler = (event) =>{
@@ -72,6 +72,7 @@ class HomePage extends Component{
            <main className='HomePage'>
                <h3 className='HomePageHeader'></h3>
                {zmist}
+               {/* <Spinner/> */}
            </main>
            
         );

@@ -17,7 +17,7 @@ const koljadi = (props) => {
     
         const koljada = Object.keys(props.koljadi).map( (val, i) => {
             
-            return <Koljada 
+            return  <Koljada 
                     delay={i}
                     id={val}
                     key={props.koljadi[val].title}

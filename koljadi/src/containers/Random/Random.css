@@ -1,0 +1,22 @@
+.Random .PressButton{
+    display: flex;
+    flex-flow: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20vh;
+    margin-bottom: 100px;
+}
+
+.Random button{
+  
+    border:none;
+    width: 100px;
+    height: 35px;
+    border-radius:3px;
+    background-color: #519ed1;
+    color:rgb(230, 230, 230);
+}
+
+.Random h2{
+    text-align: center;
+}

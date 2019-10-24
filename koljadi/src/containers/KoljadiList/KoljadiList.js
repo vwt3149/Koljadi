@@ -3,15 +3,17 @@ import React, { Component } from 'react';
 import Koljadi from '../../components/Koljadi/Koljadi';
 import axios from '../../axios/axios';
 import Spinner from '../../components/UI/Spinner/Spinner';
-import Aux from '../../hoc/Aux';
+// import Aux from '../../hoc/Aux';
+import './KoljadiList.css'
 
 class KoljadiList extends Component{
 
     state = {
         koljadi: null,
         isLoading: false,
+        loaded: false
     }
-
+   
      async componentDidMount(){
             this.setState({isLoading:true})
             try {
@@ -19,6 +21,7 @@ class KoljadiList extends Component{
                 this.setState({
                     koljadi: response.data,
                     isLoading: false,
+                    loaded: true
                 })
        
             } catch (error) {
@@ -28,18 +31,21 @@ class KoljadiList extends Component{
             
             
             //Scrolling to Koljada automatically
-            if (this.props.location.state.koljadaID && this.state.koljadi) {
-                const id = this.props.location.state.koljadaID
-                const timingOfScroll = Number(`${this.props.location.state.indexOfKoljadi + 1}00`) ;
-                if (  document.getElementById(id)) {
-                    console.log(this.props)
-                    console.log(timingOfScroll)
-                    setTimeout(() => {
-                        document.getElementById(id).scrollIntoView()
-                    }, timingOfScroll );
+            if (this.props.location.state && this.state.loaded) {
+                if (this.props.location.state.koljadaID && this.state.koljadi) {
+                    const id = this.props.location.state.koljadaID
+                    const timingOfScroll = Number(`${this.props.location.state.indexOfKoljadi + 1}00`) ;
+                   
+                    if (  document.getElementById(id)) {
+                        setTimeout(() => {
+                            document.getElementById(id).scrollIntoView();
+                            this.setState({loaded: false})
+                        }, timingOfScroll );
+                    }
                 }
             }
             
+
         }
        
         
@@ -47,7 +53,7 @@ class KoljadiList extends Component{
     render(){
         let koljadi = <Spinner/>;
         if (this.state.koljadi !== null && !this.state.isLoading) {
-            
+            console.log('[DACO]', this.state.koljadi)
             koljadi =( <Koljadi 
                         history={this.props.history}
                         koljadi={this.state.koljadi}
@@ -55,11 +61,10 @@ class KoljadiList extends Component{
         }
 
         return(
-            <Aux>
+            <section className='KoljadiList'>
+                <h2>Koljadi</h2>
                 {koljadi}
-               
-                {/* <Spinner/> */}
-            </Aux>
+            </section>
         );
     }
 }
