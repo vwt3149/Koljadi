@@ -19,43 +19,27 @@ class Random extends Component{
     }
 
      componentDidMount(){
-    //    const config = {
-    //     apiKey: 'AIzaSyBhypgymYLiYwFNKk2Nldr9Vwl9EmQQjMk',
-    //     authDomain: 'kolajdi.firebaseapp.com/',
-    //     databaseURL: 'https://kolajdi.firebaseio.com/',
-    //     storageBucket: 'koljadi.appspot.com',
-    //     messagingSenderId: '123456789'
-    //    }
+   
 
-       const firebaseConfig = {
-            apiKey: "AIzaSyBhypgymYLiYwFNKk2Nldr9Vwl9EmQQjMk",
-            authDomain: "koljadi.firebaseapp.com",
-            databaseURL: "https://koljadi.firebaseio.com",
-            projectId: "koljadi",
-            storageBucket: "koljadi.appspot.com",
-            messagingSenderId: "979777711006",
-            appId: "1:979777711006:web:4abc70a5ad979349c9c48f"
-          };
-       
 
-        if (!firebase.apps.length) {
-            firebase.initializeApp(firebaseConfig);
+        // if (!firebase.apps.length) {
+        //     firebase.initializeApp(firebaseConfig);
 
-        }
-        const database = firebase.database();
-        const  ref = database.ref('randomLyrics');
-        ref.on('value', gotData, err);
+        // }
+        // const database = firebase.database();
+        // const  ref = database.ref('randomLyrics');
+        // ref.on('value', gotData, err);
         
-        function gotData(data){
-            // console.log(data.val());
-            // console.log('[Data]'); 
-        }
+        // function gotData(data){
+        //     // console.log(data.val());
+        //     // console.log('[Data]'); 
+        // }
 
-         function err (err)  {
-            // console.log(err);
-            // console.log('[Err]');
+        //  function err (err)  {
+        //     // console.log(err);
+        //     // console.log('[Err]');
 
-        }
+        // }
         
       
     }
@@ -106,21 +90,21 @@ class Random extends Component{
        if (!this.state.koljadi) {
         await this.getKoljadiHandler();
        }
-       const databaseRef = firebase.database().ref('randomLyrics');
+    //    const databaseRef = firebase.database().ref('randomLyrics');
       if (this.state.koljadi) {
      
       const {first, second} = this.randomGenerator();
         console.log(first, second)
-       databaseRef.set({
-         first,
-         second
-        });
+    //    databaseRef.set({
+    //      first,
+    //      second
+    //     });
 
-     await  databaseRef.on( 'value', data => {this.setState({updatedKoljadiFirebase:data.val()})  })
+    //  await  databaseRef.on( 'value', data => {this.setState({updatedKoljadiFirebase:data.val()})  })
        
-        const { first: f, second: s} =  this.state.updatedKoljadiFirebase;
+        // const { first: f, second: s} =  this.state.updatedKoljadiFirebase;
         let daco =  Object.keys(this.state.koljadi).map( (val, i) => {
-            if (val === f || val === s ){
+            if (val === first || val === second ){
                 
                 return val
             }
