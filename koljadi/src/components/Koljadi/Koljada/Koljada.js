@@ -29,9 +29,9 @@ const koljada = (props) => {
         <div className='Koljada' id={props.id}  style={{animationDelay: `.${props.delay}s`}} >
             <h3>{props.title}</h3>
             <li >
-                <p>
+                <pre>
                    {props.lyrics}
-                </p>
+                </pre>
             </li>
         </div>
        

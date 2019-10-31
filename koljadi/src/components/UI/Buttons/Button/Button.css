@@ -1,0 +1,24 @@
+.SocialButton{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width:140px;
+    padding: 10px;
+    box-sizing: border-box;
+    border: none;
+    border-radius: 3px;
+    margin: 10px 0;
+    transition:all .3s ;
+    
+}
+
+.SocialButton:hover{
+    /* box-shadow:  0 0 8px 1px rgb(218, 218, 218); */
+    background-color:#bdc3c7;
+    color: white;
+    
+}
+
+.SocialButton img{
+    height: 20px;
+}

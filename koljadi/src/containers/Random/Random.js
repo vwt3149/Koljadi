@@ -3,9 +3,8 @@ import React, { Component } from 'react';
 import Koljadi from '../../components/Koljadi/Koljadi';
 import Spinner from "../../components/UI/Spinner/Spinner";
 import axios from '../../axios/axios';
-import * as firebase from 'firebase';
-// import 'firebase/firebase-database'
-// import * as firebase from '../../../../node_modules/@firebase';
+// import * as firebase from 'firebase';
+
 import './Random.css';
 class Random extends Component{
 
@@ -53,7 +52,7 @@ class Random extends Component{
                 // isLoading: false,
                 // clicked:false
             })
-   
+        
         } catch (error) {
             // this.setState({isLoading: false})
             // console.log(error);
@@ -80,9 +79,7 @@ class Random extends Component{
        return generate()
         
     }
-    componentWillUnmount(){
-        console.log('UNmount')
-    }
+    
   
 
    async  randomKoljadiClickHandler(){
@@ -94,7 +91,6 @@ class Random extends Component{
       if (this.state.koljadi) {
      
       const {first, second} = this.randomGenerator();
-        console.log(first, second)
     //    databaseRef.set({
     //      first,
     //      second
@@ -103,24 +99,14 @@ class Random extends Component{
     //  await  databaseRef.on( 'value', data => {this.setState({updatedKoljadiFirebase:data.val()})  })
        
         // const { first: f, second: s} =  this.state.updatedKoljadiFirebase;
-        let daco =  Object.keys(this.state.koljadi).map( (val, i) => {
-            if (val === first || val === second ){
-                
-                return val
-            }
-        });
-
-        const filter = daco.filter( element => {
-            return element !== undefined
-        })
+        let filterKoljadi = Object.keys(this.state.koljadi).filter( koljada => koljada === first || koljada === second? koljada : null)
 
         let koljadi={};
-        let newKoljadi={};
-       for (const key of filter) {
-             koljadi[key] = {...this.state.koljadi[key]}
-             newKoljadi = {...koljadi}
-        }
-        this.setState({updatedKoljadi: {...newKoljadi}})
+        filterKoljadi.map( koljada => {
+            koljadi[koljada] = this.state.koljadi[koljada];
+            return null;
+        });
+        this.setState({updatedKoljadi: {...koljadi}})
       }
 
     

@@ -1,6 +1,6 @@
 .Koljada{    
     background-color: rgb(255, 255, 255);
-    box-sizing: border-box;
+    /* box-sizing: border-box; */
     box-shadow: 0 5px 10px rgb(110, 110, 110);
     border-right: 30px solid #2980b9;
     border-radius: 3px;
@@ -31,10 +31,12 @@
     align-items: flex-start;
 }
 
-.Koljada li p{
-    line-height: 40px;
-    word-spacing: 3px;
-    letter-spacing: 1px;
+.Koljada li pre{
+    /* text-align: left; */
+    font-size: 15px;
+     line-height: 20px;
+    /* word-spacing: 3px; */
+    letter-spacing: 1px;  
     /* font-weight: 400; */
 }
 

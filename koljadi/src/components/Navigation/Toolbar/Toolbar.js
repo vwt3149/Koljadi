@@ -8,7 +8,7 @@ import './Toolbar.css';
 const toolBar = (props) =>{
     
     return(
-        <header className={'Toolbar'}>
+        <header className={['Toolbar', props.auth? null : 'UnAuth'].join(' ')}>
             <div>
                 <Link className='HeadingLink' to='/home'>
                 <h1 className = "Heading">Koljadi</h1>
@@ -18,7 +18,7 @@ const toolBar = (props) =>{
             
             
               {/* <NavigationItems/> */}
-              <MenuButton isOpen={props.isOpen} clicked={props.sideDrawerOpen}/>
+             { props.auth?<MenuButton isOpen={props.isOpen} clicked={props.sideDrawerOpen}/> : null}
         </header>
     );
 }

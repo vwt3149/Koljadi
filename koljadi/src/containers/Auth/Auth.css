@@ -1,0 +1,14 @@
+
+.Auth {
+    background-color: rgb(240, 240, 240);
+    border-radius: 3px;
+    padding:10px ;
+    box-shadow: 0 5px 10px rgba(110, 110, 110, 0.425);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-flow: column;
+    margin: 20px 0 0 0 ;
+    text-align: center;
+    font-style: italic;
+}

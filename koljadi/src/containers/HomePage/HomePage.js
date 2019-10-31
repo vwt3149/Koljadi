@@ -16,6 +16,7 @@ class HomePage extends Component{
     }
 
    async componentDidMount(){
+
         window.location.hash = '';
         this.setState({isLoading:true})
         try {
@@ -31,6 +32,10 @@ class HomePage extends Component{
             console.log(error);
         }
 
+     
+    }
+
+    autoTypedHeader(){
         const options = {
             strings: ["RuthenianFinestKoljadi"],
             typeSpeed: 80,
@@ -38,8 +43,7 @@ class HomePage extends Component{
           };
           
           this.typed = new Typed('.HomePageHeader', options);
-
-          this.screen = window.screen.width
+          
     }
     
     zmistClickHandler = (event) =>{
@@ -70,7 +74,7 @@ class HomePage extends Component{
 
         return(
            <main className='HomePage'>
-               <h3 className='HomePageHeader'></h3>
+               <h3 className='HomePageHeader'>RuthenianFinestKoljadi</h3>
                {zmist}
                {/* <Spinner/> */}
            </main>
