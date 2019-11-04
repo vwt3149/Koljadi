@@ -113,21 +113,16 @@ class Random extends Component{
     }
 
    spinner(){
-     
-       if (this.state.clicked && !this.state.koljadi) {
-           return <Spinner/>
-       }
+      return this.state.clicked && !this.state.koljadi? <Spinner/> : null
+    //    if ) {
+    //        return <Spinner/>
+    //    }
    }
     
     render(){
       
-        let koljadi = null;
-        if (this.state.updatedKoljadi) {
-            console.log('[mrk*********]', this.state.updatedKoljadi)
-            koljadi = <Koljadi 
-                    koljadi={this.state.updatedKoljadi}
-                    />
-        }
+        let koljadi = this.state.updatedKoljadi? <Koljadi koljadi={this.state.updatedKoljadi}/> : null;
+        
         window.scrollTo({top: 0})
         return(
             

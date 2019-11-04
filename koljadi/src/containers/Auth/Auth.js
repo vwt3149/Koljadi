@@ -58,7 +58,11 @@ class Auth extends Component {
                 <form>
 
                 </form>
-                <Button style={{justifyContent:'center'}}>Daco</Button>
+                <div className='AuthButtons'>
+                    <Button active style={{justifyContent:'center' }}>Sing in</Button>
+                    <Button style={{justifyContent:'center'}}>Register</Button>
+                </div>
+                
                 
             </div>
         );

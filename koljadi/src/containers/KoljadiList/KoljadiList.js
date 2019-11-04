@@ -51,6 +51,7 @@ class KoljadiList extends Component{
         
         
     render(){
+        console.log(window)
         let koljadi = <Spinner/>;
         if (this.state.koljadi !== null && !this.state.isLoading) {
             console.log('[DACO]', this.state.koljadi)

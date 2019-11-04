@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import Logo from '../../Logo/Logo'
-import MenuButton from '../../UI/MenuButton/MenuButton';
+import MenuButton from '../../UI//Buttons/MenuButton/MenuButton';
 
 import './Toolbar.css';
 

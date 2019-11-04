@@ -8,7 +8,7 @@ import Random from './containers/Random/Random';
 import Auth from './containers/Auth/Auth'
 class App extends Component{
   state = {
-    auth: false
+    auth: true
   }
   render(){
     const authNav = (

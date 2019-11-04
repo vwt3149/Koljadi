@@ -48,6 +48,7 @@ class HomePage extends Component{
     
     zmistClickHandler = (event) =>{
         console.log(event.target.id)
+        window.scrollTo({top:0})
         // console.log( Object.getOwnPropertyNames(this.state.koljadi), '[Reci]')
         this.props.history.push({
             pathname:`/koljadi`,
@@ -73,11 +74,11 @@ class HomePage extends Component{
         
 
         return(
-           <main className='HomePage'>
+           <div className='HomePage'>
                <h3 className='HomePageHeader'>RuthenianFinestKoljadi</h3>
                {zmist}
                {/* <Spinner/> */}
-           </main>
+           </div>
            
         );
     }

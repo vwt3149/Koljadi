@@ -1,8 +1,14 @@
 .Layout{
-    margin-bottom: 200px;
-    
+  position: absolute;
+  width: 100%;
+
 }
 .Layout main{
-    margin: 0 10px;
+ 
+    min-height: 100vh;
+    /* margin-bottom: 200px; */
+    margin: 0 auto;
+    max-width: 800px;
+    /* min-width: 60vw; */
     
 }

@@ -22,3 +22,12 @@
 .SocialButton img{
     height: 20px;
 }
+.SocialButton.Active{
+    background-color:#71aacf;
+    color: white;
+}
+
+.SocialButton.Active:hover{
+    background-color:#3297d6;
+    color: white;
+}
