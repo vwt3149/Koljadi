@@ -4,13 +4,14 @@ import Footer from '../../components/Footer/Footer';
 import Toolbar from '../../components/Navigation/Toolbar/Toolbar';
 import SideDrawer from '../../components/Navigation/SideDrawer/SideDrawer';
 import BackToTopButton from '../../components/UI/BackToTopButton/BackToTopButton';
+
 import Aux from '../Aux';
 
 import './Layout.css';
 class Layout extends Component{
     state = {
         showSideDrawer: false,
-        auth: true
+        auth: false
     }
     
     OpenSideDrawerHandler = () => {

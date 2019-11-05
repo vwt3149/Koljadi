@@ -52,6 +52,7 @@ class Random extends Component{
                 // isLoading: false,
                 // clicked:false
             })
+            console.log(response,'KEPA')
         
         } catch (error) {
             // this.setState({isLoading: false})

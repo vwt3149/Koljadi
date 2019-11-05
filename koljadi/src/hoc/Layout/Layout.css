@@ -1,14 +1,12 @@
 .Layout{
   position: absolute;
   width: 100%;
-
 }
 .Layout main{
- 
     min-height: 100vh;
     /* margin-bottom: 200px; */
     margin: 0 auto;
-    max-width: 800px;
+    max-width: 600px;
     /* min-width: 60vw; */
     
 }

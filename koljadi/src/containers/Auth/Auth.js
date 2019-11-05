@@ -3,14 +3,16 @@ import React, { Component } from 'react';
 import google from '../../assets/img/google.png';
 import facebook from '../../assets/img/facebook.png';
 import Button from '../../components/UI/Buttons/Button/Button';
+import Input from '../../components/UI/Input/Input';
 import './Auth.css';
+import { auth } from 'firebase';
 
 class Auth extends Component {
     state = {
-        inputsInfo:{
-            email:this.createInputElement('input', 'email', 'Your email'),
-            password:this.createInputElement('input', 'password', 'Your password'),
-            passwordRepeat:this.createInputElement('input', 'password', 'Repeat password')
+        authInputsElements:{
+            email:this.createInputElement('input', 'text', 'E-mail'),
+            password:this.createInputElement('input', 'password', 'Password'),
+            passwordRepeat:this.createInputElement('input', 'password', 'Repeat password',)
         }
     }
 
@@ -18,15 +20,13 @@ class Auth extends Component {
         console.log(this.state)
     }
 
-    createInputElement(elementType, type, placeholder, minLength = 6, maxLength = 25 ){
+    createInputElement(elementType, type, name,  minLength = null, maxLength = null, ){
         let element = {
             elementType,
             elementConfig:{
-                placeholder,
+                name,
                 type,
                 required:'required',
-                maxLength,
-                minLength,
             },
             value:'',
             validation:{
@@ -39,8 +39,54 @@ class Auth extends Component {
         return element;
     }
 
+   onTypeChangeHandler = (el) => {
+       console.log({[el.id]:el.value})
+    //    console.log(this.state)
+    const updatedAuthElements = {...this.state.authInputsElements};
+    const updatedAuthElement = {...updatedAuthElements[el.id]}
+    updatedAuthElement.value = el.value; 
+    updatedAuthElements[el.id] = updatedAuthElement
+   
+    console.log(updatedAuthElements)
+    this.setState({
+        authInputsElements: updatedAuthElements
+    })
+   }
+
+
     render(){
+        const authInputsElements = Object.entries(this.state.authInputsElements)
+        .map( element => {
+            const el = element[1]
+            console.log()
+            return <Input
+            id={element[0]}
+            key={element[0]}
+            elementConfig={el.elementConfig}
+            elementType={el.elementType}
+            value={this.state.value}
+            onTypeChange={this.onTypeChangeHandler}
+            />
+        })
+
+        const config1 = {
+            type:'text',
+            inputName:'Email',
+            name: 'text',
+            required:'required',
+            
+            
+        }
+        const config2 = {
+            type:'password',
+            inputName:'Password',
+            name: 'password',
+            required:'required'
+            
+        }
         return(
+            
+
             <div className='Auth' >
                 <h2>Sing in or Register</h2>
                 <h3> to experience Christmas spirit</h3>
@@ -56,12 +102,14 @@ class Auth extends Component {
                     >With FaceBook</Button>
                 <p>Or...</p>
                 <form>
-
+                    {authInputsElements}
+                  
+                    <div className='AuthButtons'>
+                        <Button active style={{justifyContent:'center' }}>Sing in</Button>
+                        <Button style={{justifyContent:'center'}}>Register</Button>
+                    </div>
                 </form>
-                <div className='AuthButtons'>
-                    <Button active style={{justifyContent:'center' }}>Sing in</Button>
-                    <Button style={{justifyContent:'center'}}>Register</Button>
-                </div>
+                
                 
                 
             </div>

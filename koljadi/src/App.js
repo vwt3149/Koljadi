@@ -8,8 +8,9 @@ import Random from './containers/Random/Random';
 import Auth from './containers/Auth/Auth'
 class App extends Component{
   state = {
-    auth: true
+    auth: false
   }
+  
   render(){
     const authNav = (
       <Switch>

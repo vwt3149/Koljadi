@@ -9,25 +9,21 @@
     border-radius: 3px;
     margin: 10px 0;
     transition:all .3s ;
-    
+    font-family: inherit;
 }
 
-.SocialButton:hover{
-    /* box-shadow:  0 0 8px 1px rgb(218, 218, 218); */
-    background-color:#bdc3c7;
-    color: white;
-    
-}
+
 
 .SocialButton img{
     height: 20px;
 }
 .SocialButton.Active{
-    background-color:#71aacf;
+    background-color:var(--color-blue);
     color: white;
 }
 
-.SocialButton.Active:hover{
-    background-color:#3297d6;
+.SocialButton.Active:hover,
+.SocialButton:hover{
+    background-color:var(--color-blue-d);
     color: white;
 }
