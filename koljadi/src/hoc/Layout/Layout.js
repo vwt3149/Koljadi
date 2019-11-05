@@ -11,7 +11,7 @@ import './Layout.css';
 class Layout extends Component{
     state = {
         showSideDrawer: false,
-        auth: false
+        auth: true
     }
     
     OpenSideDrawerHandler = () => {
