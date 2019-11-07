@@ -4,15 +4,18 @@ import './Input.css';
 
 const input = (props) => {
     let inputElement = null;
-
-    const onTypeChangeHandler = (event) => {
-        props.onTypeChange(event.target)
-    }
     const inputClasses = ['InputElement'];
-    // props.invalid && props.touched? inputClasses.push('invalid') : null;
+    const onTypeChangeHandler = (event) => {
+        // console.log(props.invalid)
+        props.onTypeChange(event.target);
+    }
 
+    
+   
     switch (props.elementType) {
        case('input'):
+        if (props.invalid) inputClasses.push('Invalid');
+        
         inputElement= <input
             id={props.id}
             required='required'

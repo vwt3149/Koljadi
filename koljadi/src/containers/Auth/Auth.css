@@ -13,7 +13,9 @@
     text-align: center;
     font-style: italic;
 }
-
+.Auth .Spinner{
+    width: 100%;
+}
 .Auth form{ 
     /* position: relative; */
     width: 100%;

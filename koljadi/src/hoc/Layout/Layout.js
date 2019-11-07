@@ -11,7 +11,7 @@ import './Layout.css';
 class Layout extends Component{
     state = {
         showSideDrawer: false,
-        auth: true
+    
     }
     
     OpenSideDrawerHandler = () => {
@@ -26,7 +26,7 @@ class Layout extends Component{
             <div className='Layout'>
                 
                 <Toolbar
-                    auth={this.state.auth}
+                    auth={this.props.auth}
                     isOpen = {this.state.showSideDrawer}
                     sideDrawerOpen={this.state.showSideDrawer? this.closeSideDrawerHandler :this.OpenSideDrawerHandler}
                 />
@@ -46,7 +46,7 @@ class Layout extends Component{
         const unAuthLayout = (
             <div className='Layout'>
                  <Toolbar
-                    auth={this.state.auth}
+                    auth={this.props.auth}
                     isOpen = {this.state.showSideDrawer}
                     sideDrawerOpen={this.state.showSideDrawer? this.closeSideDrawerHandler :this.OpenSideDrawerHandler}
                 />
@@ -59,7 +59,7 @@ class Layout extends Component{
         );
         return (
             <Aux>
-                 {this.state.auth? authLayout : unAuthLayout}
+                 {this.props.auth? authLayout : unAuthLayout}
             </Aux>
           
            
