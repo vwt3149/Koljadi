@@ -4,6 +4,7 @@ import * as actionTypes from './actionTypes';
 const ENDPOINTS = {
     SINGUP:'https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=',
     SINGIN:'https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=',
+    API:'AIzaSyBhypgymYLiYwFNKk2Nldr9Vwl9EmQQjMk'
 }
 
 const onSingInSuccess = authData => {
