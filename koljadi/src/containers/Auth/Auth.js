@@ -33,7 +33,7 @@ class Auth extends Component {
             
             password:this.createInputElement('input', 'password', 'Password'
             ,{autoComplete:'current-password'}
-            ,{minLength:6, maxLength:20}),
+            ,{minLength:6, maxLength:20, isPassword:true}),
         }
     }
 
@@ -81,6 +81,10 @@ class Auth extends Component {
             isValid = pattern.test( value ) && isValid
         }
 
+        // if ( rules.isPassword ) {
+        //     const pattern = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,32}$/;
+        //     isValid = pattern.test( value ) && isValid
+        // }
         if ( rules.isNumeric ) {
             const pattern = /^\d+$/;
             isValid = pattern.test( value ) && isValid
@@ -166,10 +170,12 @@ class Auth extends Component {
                   <h3> to experience Christmas spirit</h3>
                   <br/>
                   <Button 
+                      disabled
                       logo={google}
                       alt='google'
                       >With Google</Button>
                   <Button
+                      disabled
                       logo={facebook} 
                       alt='facebook'
                       imgStyle={{transform:'scale(1.4)'}}

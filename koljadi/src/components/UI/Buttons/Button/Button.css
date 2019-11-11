@@ -1,4 +1,4 @@
-.SocialButton{
+.Button{
     outline: none;
     display: flex;
     justify-content: space-between;
@@ -13,18 +13,21 @@
     font-family: inherit;
 }
 
+.Button:disabled{
+    cursor: not-allowed;
+}
 
 
-.SocialButton img{
+.Button img{
     height: 20px;
 }
-.SocialButton.Active{
+.Button.Active{
     background-color:var(--color-blue);
     color: white;
 }
 
-.SocialButton.Active:hover,
-.SocialButton:hover{
+.Button.Active:hover,
+.Button:hover{
     background-color:var(--color-blue-d);
     color: white;
 }

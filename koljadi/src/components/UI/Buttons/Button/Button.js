@@ -2,11 +2,12 @@ import React from 'react';
 
 import Spinner from '../../Spinner/Spinner';
 import './Button.css'
-const socialButton = (props) => {
+const Button = (props) => {
     return(
         <button 
+        {...props}
         onClick={props.onClick} 
-        className={['SocialButton',props.active? 'Active' : null].join(' ')}
+        className={['Button',props.active? 'Active' : null].join(' ')}
         style={props.style}
         type={props.type} 
          >
@@ -16,4 +17,4 @@ const socialButton = (props) => {
     );
 }
 
-export default socialButton;
+export default Button;
