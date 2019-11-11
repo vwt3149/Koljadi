@@ -6,12 +6,14 @@ import { createStore, combineReducers, applyMiddleware, compose } from 'redux';
 import thunk from 'redux-thunk';
 
 import authReducer from './store/reducers/auth'; 
+import koljadiReducer from './store/reducers/koljadi';
 
 import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
 const rootReducer = combineReducers({
-  auth :authReducer
+  auth :authReducer,
+  koljadi: koljadiReducer
 })
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;

@@ -1,5 +1,13 @@
 export const ON_LOG_OUT = 'ON_LOG_OUT';
-export const ON_SING_IN = 'ON_SING_IN';
+export const ON_SING_IN_START = 'ON_SING_IN_START';
 export const ON_SING_IN_SUCCESS = 'ON_SING_IN_SUCCESS';
 export const ON_SING_IN_FAIL = 'ON_SING_IN_FAIL';
-export const ON_REGISTER = 'ON_REGISTER';
+export const ON_SING_UP_START = 'ON_SING_UP_START';
+export const ON_SING_UP_SUCCESS = 'ON_SING_UP_SUCCESS';
+export const ON_SING_UP_FAIL = 'ON_SING_UP_FAIL';
+// export const 
+
+export const ON_GET_KOLJADI_START = 'ON_GET_KOLJADI_START';
+export const ON_GET_KOLJADI_SUCCESS = 'ON_GET_KOLJADI_SUCCESS';
+export const ON_GET_KOLJADI_FAIL = 'ON_GET_KOLJADI_FAIL';
+

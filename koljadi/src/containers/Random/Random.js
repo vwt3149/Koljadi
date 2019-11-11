@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
-
+import { connect } from 'react-redux';
 import Koljadi from '../../components/Koljadi/Koljadi';
 import Spinner from "../../components/UI/Spinner/Spinner";
 import axios from '../../axios/axios';
+import {onGetKoljadi} from '../../store/actions/koljadi'
 // import * as firebase from 'firebase';
 
 import './Random.css';
@@ -52,7 +53,7 @@ class Random extends Component{
                 // isLoading: false,
                 // clicked:false
             })
-            console.log(response,'KEPA')
+            console.log(response)
         
         } catch (error) {
             // this.setState({isLoading: false})
@@ -63,7 +64,7 @@ class Random extends Component{
 
 
      randomGenerator = () =>{
-        const koljadiLength = Object.getOwnPropertyNames(this.state.koljadi).length;
+        const koljadiLength = Object.getOwnPropertyNames(this.props.koljadi).length;
         let generate = () =>{
             let generateFirst, generateSecond;
             do{
@@ -71,7 +72,7 @@ class Random extends Component{
                  generateSecond = Math.floor(Math.random() * koljadiLength);
             }
             while (generateFirst === generateSecond) 
-            const koljadiTitle = Object.keys(this.state.koljadi)
+            const koljadiTitle = Object.keys(this.props.koljadi)
             return {
                 first: koljadiTitle[generateFirst],
                 second: koljadiTitle[generateSecond]
@@ -84,12 +85,13 @@ class Random extends Component{
   
 
    async  randomKoljadiClickHandler(){
-       
-       if (!this.state.koljadi) {
-        await this.getKoljadiHandler();
-       }
+    const koljadi = !this.props.koljadi? this.props.onGetKoljadi() :null;
+
+    //    if (!this.props.koljadi) {
+    //     await this.getKoljadiHandler();
+    //    }
     //    const databaseRef = firebase.database().ref('randomLyrics');
-      if (this.state.koljadi) {
+      if (this.props.koljadi) {
      
       const {first, second} = this.randomGenerator();
     //    databaseRef.set({
@@ -100,11 +102,11 @@ class Random extends Component{
     //  await  databaseRef.on( 'value', data => {this.setState({updatedKoljadiFirebase:data.val()})  })
        
         // const { first: f, second: s} =  this.state.updatedKoljadiFirebase;
-        let filterKoljadi = Object.keys(this.state.koljadi).filter( koljada => koljada === first || koljada === second? koljada : null)
+        let filterKoljadi = Object.keys(this.props.koljadi).filter( koljada => koljada === first || koljada === second? koljada : null)
 
         let koljadi={};
         filterKoljadi.map( koljada => {
-            koljadi[koljada] = this.state.koljadi[koljada];
+            koljadi[koljada] = this.props.koljadi[koljada];
             return null;
         });
         this.setState({updatedKoljadi: {...koljadi}})
@@ -114,7 +116,7 @@ class Random extends Component{
     }
 
    spinner(){
-      return this.state.clicked && !this.state.koljadi? <Spinner/> : null
+      return this.state.clicked && !this.props.koljadi? <Spinner/> : null
     //    if ) {
     //        return <Spinner/>
     //    }
@@ -144,4 +146,15 @@ class Random extends Component{
     }
 }
 
-export default Random
+const mapStateToProps = (state) =>{
+    return{
+        koljadi: state.koljadi.koljadi,
+        isLoading: state.koljadi.isLoading
+    }
+}
+const mapDispatchToProps = (dispatch) =>{
+    return{
+        onGetKoljadi: () => dispatch(onGetKoljadi())
+    }
+}
+export default connect(mapStateToProps,mapDispatchToProps)(Random)

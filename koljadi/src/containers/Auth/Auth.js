@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
-import {withRouter, Redirect} from 'react-router-dom';
+import { useHistory} from 'react-router'
+import {withRouter, Link} from 'react-router-dom';
 import {connect} from 'react-redux';
 import axios from 'axios';
+import firebase from 'firebase';
 
 import google from '../../assets/img/google.png';
 import facebook from '../../assets/img/facebook.png';
@@ -10,6 +12,7 @@ import Input from '../../components/UI/Input/Input';
 import Spinner from '../../components/UI/Spinner/Spinner';
 import Backdrop from '../../components/UI/BackDrop/BackDrop';
 import Aux from '../../hoc/Aux';
+import * as action from '../../store/actions/auth';
 import './Auth.css';
 // import { auth } from 'firebase';
 
@@ -24,18 +27,14 @@ class Auth extends Component {
         auth:false,
         authInputsElements:{
             email:this.createInputElement('input', 'text', 'E-mail'
-            ,{autoComplete:'off'}
-            // ,{}
+            // ,{autoComplete:'off'}
+            ,{}
             ,{minLength:6, maxLength:256, isEmail:true }),
             
             password:this.createInputElement('input', 'password', 'Password'
             ,{autoComplete:'current-password'}
             ,{minLength:6, maxLength:20}),
         }
-    }
-
-    componentDidMount(){
-        console.log(this.props.isLoading)
     }
 
     createInputElement(elementType, type, name, ...rest ){
@@ -119,54 +118,25 @@ class Auth extends Component {
       
    }
 
-   singUpHandler = async () => {
-    this.setState({isLoading:true})
-
-    try {
-        console.log('[SING UP HANDLER]')
+   singUpHandler =  () => {
         const{ email, password } = this.state.authInputsElements;
-        const payload = {
-            email: email.value,
-            password: password.value,
-            returnSecureToken: true
-        }
-        const response = await axios.post(ENDPOINTS.SINGUP+ENDPOINTS.API, payload);
-        this.setState({isLoading:false})
-
-        console.log(response.data)
-    } catch (error) {
-        this.setState({isLoading:false})
-        console.log(error.response);
-        console.log('mrk')
-    }
+        this.props.onSingUp(email.value, password.value)
    }
 
-   singInHandler = async () => {
-       this.setState({isLoading:true})
-    try {
-        console.log('[SING In HANDLER]')
+   singInHandler =  () => {
         const{ email, password } = this.state.authInputsElements;
-        const payload = {
-            email: email.value,
-            password: password.value,
-            returnSecureToken: true
-        }
-        const {data} = await axios.post(ENDPOINTS.SINGIN+ENDPOINTS.API, payload);
-        this.setState({
-            isLoading: false,
-            auth:  true
-        });
-       
-
-    } catch (error) {
-        this.setState({isLoading:false})
-        console.log(error.response);
-    }
+        this.props.onSingIn(email.value, password.value)
    }
 
+   passwordResetHandler = () => {
+       console.log(this.props)
+    //    this.props.history.push('/resetPassword')
+   }
   
    
     render(){
+
+
         const authInputsElements = Object.entries(this.state.authInputsElements)
         .map( element => {
             const el = element[1];
@@ -188,15 +158,13 @@ class Auth extends Component {
             validSubmit = true;
         }
         console.log(validSubmit);
-     
-        return(
-            
-                 <div className='Auth' >
-                 {this.state.isLoading? <div  className='Spinner'><Backdrop show={this.state.isLoading}/> <Spinner/> </div> : null}
+
+        const form  = (
+            <div className='Auth' >
+                 {this.props.isLoading? <div  className='Spinner'><Backdrop show={this.props.isLoading}/> <Spinner/> </div> : null}
                   <h2>Sing in or Register</h2>
                   <h3> to experience Christmas spirit</h3>
                   <br/>
-  
                   <Button 
                       logo={google}
                       alt='google'
@@ -225,8 +193,15 @@ class Auth extends Component {
                            >Register</Button>
                       </div>
                   </form>  
+                  <Link to='/resetPassword' >Forgot password?</Link>
               </div>
-  
+        )
+     
+        return(
+            <Aux>
+                {form}
+            </Aux>
+              
         );
     }
 }
@@ -236,9 +211,11 @@ const mapStateToProps =  state => {
         isLoading: state.auth.isLoading
     }
 };
-// const mapDispatchToProps = dispatch => {
-//     return {
+const mapDispatchToProps = dispatch => {
+    return {
+        onSingIn: (email, password) => dispatch(action.onSingIn(email, password)),
+        onSingUp: (email, password) => dispatch(action.onSingUp(email, password))
 
-//     }
-// }
-export default connect(mapStateToProps)(withRouter(Auth));
+    }
+}
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Auth));

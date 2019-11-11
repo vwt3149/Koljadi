@@ -8,16 +8,54 @@ const initialState = {
 }
 
 const reducer = (state = initialState, action) =>{
-    switch (action.types) {
-        case actionTypes.ON_SING_IN:
-            return{
-                ...state,
-                isLoading:false
-            }
+    switch (action.type) {
+        // case actionTypes.ON_SING_IN:
+        //     return{
+        //         ...state,
+        //         isLoading:false
+        //     }
         case actionTypes.ON_SING_IN_SUCCESS:
             return{
                 ...state,
-                isLoading:false
+                isLoading:false,
+                idToken: action.idToken,
+                localId: action.localId
+            }
+        case actionTypes.ON_SING_IN_START:
+            return{
+                ...state,
+                isLoading:true
+            }
+        case actionTypes.ON_SING_IN_FAIL:
+            return{
+                ...state,
+                isLoading:false,
+                error: action.error
+            }
+            case actionTypes.ON_SING_UP_SUCCESS:
+            return{
+                ...state,
+                isLoading:false,
+                idToken: action.idToken,
+                localId: action.localId
+            }
+        case actionTypes.ON_SING_UP_START:
+            return{
+                ...state,
+                isLoading:true
+            }
+        case actionTypes.ON_SING_UP_FAIL:
+            return{
+                ...state,
+                isLoading:false,
+                error: action.error
+            }
+        
+        case actionTypes.ON_LOG_OUT:
+            return{
+                ...state,
+                idToken:null,
+                localId:null
             }
         default:   
             return state;

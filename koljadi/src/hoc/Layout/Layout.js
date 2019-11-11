@@ -16,10 +16,16 @@ class Layout extends Component{
     
     OpenSideDrawerHandler = () => {
         this.setState({showSideDrawer: true});
+        setTimeout(() => {
+            console.log(this.state.showSideDrawer,'[SIDE DRAWER]')
+        },200)
     }
     
     closeSideDrawerHandler = () => {
         this.setState({showSideDrawer: false})
+        setTimeout(() => {
+            console.log(this.state.showSideDrawer,'[SIDE DRAWER]')
+        },200)
     }
     render(){
         const authLayout = (
