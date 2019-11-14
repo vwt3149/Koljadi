@@ -61,19 +61,19 @@ const reducer = (state = initialState, action) =>{
                 profilePicture:null,
                 userFullName:null
             }
-        case actionTypes.ON_FACEBOOK_LOG_IN_START:
+        case actionTypes.ON_GOOGLE_SING_IN_START:
             return{
                 ...state,
                 isLoading: true,
                 error:action.error
             }
-        case actionTypes.ON_FACEBOOK_LOG_IN_FAIL:
+        case actionTypes.ON_GOOGLE_SING_IN_FAIL:
             return{
                 ...state,
                 isLoading: false,
                 error:action.error
             }
-        case actionTypes.ON_FACEBOOK_LOG_IN_SUCCESS:
+        case actionTypes.ON_GOOGLE_SING_IN_SUCCESS:
             return{
                 ...state,
                 isLoading: false,
