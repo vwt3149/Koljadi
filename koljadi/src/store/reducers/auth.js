@@ -4,7 +4,9 @@ const initialState = {
     idToken:null,
     localId:null,
     isLoading:false,
-    error:null
+    error:null,
+    profilePicture:null,
+    userFullName:null
 }
 
 const reducer = (state = initialState, action) =>{
@@ -55,7 +57,51 @@ const reducer = (state = initialState, action) =>{
             return{
                 ...state,
                 idToken:null,
-                localId:null
+                localId:null,
+                profilePicture:null,
+                userFullName:null
+            }
+        case actionTypes.ON_FACEBOOK_LOG_IN_START:
+            return{
+                ...state,
+                isLoading: true,
+                error:action.error
+            }
+        case actionTypes.ON_FACEBOOK_LOG_IN_FAIL:
+            return{
+                ...state,
+                isLoading: false,
+                error:action.error
+            }
+        case actionTypes.ON_FACEBOOK_LOG_IN_SUCCESS:
+            return{
+                ...state,
+                isLoading: false,
+                idToken: action.idToken,
+                localId: action.localId,
+                profilePicture:action.profilePicture,
+                userFullName:action.userFullName
+            }
+        case actionTypes.ON_FACEBOOK_LOG_IN_START:
+            return{
+                ...state,
+                isLoading: true,
+                error:action.error
+            }
+        case actionTypes.ON_FACEBOOK_LOG_IN_FAIL:
+            return{
+                ...state,
+                isLoading: false,
+                error:action.error
+            }
+        case actionTypes.ON_FACEBOOK_LOG_IN_SUCCESS:
+            return{
+                ...state,
+                isLoading: false,
+                idToken: action.idToken,
+                localId: action.localId,
+                profilePicture:action.profilePicture,
+                userFullName:action.userFullName
             }
         default:   
             return state;

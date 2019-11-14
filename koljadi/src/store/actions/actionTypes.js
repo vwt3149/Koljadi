@@ -1,3 +1,4 @@
+//Singin-SingUp Email and Password
 export const ON_LOG_OUT = 'ON_LOG_OUT';
 export const ON_SING_IN_START = 'ON_SING_IN_START';
 export const ON_SING_IN_SUCCESS = 'ON_SING_IN_SUCCESS';
@@ -5,9 +6,15 @@ export const ON_SING_IN_FAIL = 'ON_SING_IN_FAIL';
 export const ON_SING_UP_START = 'ON_SING_UP_START';
 export const ON_SING_UP_SUCCESS = 'ON_SING_UP_SUCCESS';
 export const ON_SING_UP_FAIL = 'ON_SING_UP_FAIL';
-// export const 
+//SingIn Googole
+export const ON_GOOGLE_SING_IN_START = 'ON_GOOGLE_SING_IN_START';
+export const ON_GOOGLE_SING_IN_SUCCESS = 'ON_GOOGLE_SING_IN_SUCCESS';
+export const ON_GOOGLE_SING_IN_FAIL = 'ON_GOOGLE_SING_IN_FAIL';
+//SingIn Facebook
+export const ON_FACEBOOK_LOG_IN_START = 'ON_FACEBOOK_LOG_IN_START';
+export const ON_FACEBOOK_LOG_IN_SUCCESS = 'ON_FACEBOOK_LOG_IN_SUCCESS';
+export const ON_FACEBOOK_LOG_IN_FAIL = 'ON_FACEBOOK_LOG_IN_FAIL';
 
 export const ON_GET_KOLJADI_START = 'ON_GET_KOLJADI_START';
 export const ON_GET_KOLJADI_SUCCESS = 'ON_GET_KOLJADI_SUCCESS';
 export const ON_GET_KOLJADI_FAIL = 'ON_GET_KOLJADI_FAIL';
-

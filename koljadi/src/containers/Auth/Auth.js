@@ -13,6 +13,7 @@ import Spinner from '../../components/UI/Spinner/Spinner';
 import Backdrop from '../../components/UI/BackDrop/BackDrop';
 import Aux from '../../hoc/Aux';
 import * as action from '../../store/actions/auth';
+import {firebaseInit, firebaseGoogleSingIn} from '../../firebase/firebase';
 import './Auth.css';
 // import { auth } from 'firebase';
 
@@ -136,6 +137,8 @@ class Auth extends Component {
        console.log(this.props)
     //    this.props.history.push('/resetPassword')
    }
+
+   
   
    
     render(){
@@ -170,12 +173,14 @@ class Auth extends Component {
                   <h3> to experience Christmas spirit</h3>
                   <br/>
                   <Button 
-                      disabled
+                      onClick={this.props.onGoogleSingIn} 
+                    //   disabled
                       logo={google}
                       alt='google'
                       >With Google</Button>
                   <Button
-                      disabled
+                       onClick={this.props.onFacebookLogIn} 
+                    //   disabled
                       logo={facebook} 
                       alt='facebook'
                       imgStyle={{transform:'scale(1.4)'}}
@@ -220,8 +225,9 @@ const mapStateToProps =  state => {
 const mapDispatchToProps = dispatch => {
     return {
         onSingIn: (email, password) => dispatch(action.onSingIn(email, password)),
-        onSingUp: (email, password) => dispatch(action.onSingUp(email, password))
-
+        onSingUp: (email, password) => dispatch(action.onSingUp(email, password)),
+        onGoogleSingIn: () => dispatch(action.onGoogleSingIn()),
+        onFacebookLogIn: () => dispatch(action.onFacebookLogIn())
     }
 }
 export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Auth));

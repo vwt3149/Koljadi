@@ -1,11 +1,24 @@
 import axios from 'axios';
+import firebase from 'firebase';
 import * as actionTypes from './actionTypes';
 
 const ENDPOINTS = {
     SINGUP:'https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=',
     SINGIN:'https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=',
-    API:'AIzaSyBhypgymYLiYwFNKk2Nldr9Vwl9EmQQjMk'
+    API:'AIzaSyBhypgymYLiYwFNKk2Nldr9Vwl9EmQQjMk',
 }
+
+const firebaseConfig = {
+    apiKey: "AIzaSyBhypgymYLiYwFNKk2Nldr9Vwl9EmQQjMk",
+    authDomain: "koljadi.firebaseapp.com",
+    databaseURL: "https://koljadi.firebaseio.com",
+    projectId: "koljadi",
+    storageBucket: "koljadi.appspot.com",
+    messagingSenderId: "979777711006",
+    appId: "1:979777711006:web:4abc70a5ad979349c9c48f"
+  };
+
+
 
 const onSingInSuccess = authData => {
     return{
@@ -31,6 +44,7 @@ const onSingInStart = () => {
 }
 
 const onSingUpSuccess = authData => {
+    console.log(authData,'[Auth data]')
     return{
         type: actionTypes.ON_SING_UP_SUCCESS,
         idToken: authData.idToken,
@@ -70,6 +84,98 @@ export const onLogOut = () => {
         type:actionTypes.ON_LOG_OUT
     }
 }
+
+const onGoogleSingInStart = () => {
+    return{
+        type: actionTypes.ON_GOOGLE_SING_IN_START,
+        error: null
+    }
+}
+
+const onGoogleSingInFail = (error) => {
+    return{
+        type: actionTypes.ON_GOOGLE_SING_IN_FAIL,
+        error
+    }
+}
+
+const onGoogleSingInSuccess = (authData) => {
+    return{
+        type: actionTypes.ON_GOOGLE_SING_IN_SUCCESS,
+        idToken: authData.credential.idToken,
+        localId: authData.user.uid,
+        profilePicture: authData.user.photoURL,
+        userFullName: authData.user.displayName
+    }
+}
+
+export const onGoogleSingIn = () => {
+   return async dispatch =>{
+       dispatch(onGoogleSingInStart())
+        try {
+            if (!firebase.apps.length) {
+                firebase.initializeApp(firebaseConfig);
+            }
+            const provider = await new firebase.auth.GoogleAuthProvider();
+            const response = await firebase.auth().signInWithPopup(provider);
+            console.log(response,'[GOOGLE AUTH DATA]')
+            dispatch(onGoogleSingInSuccess(response))
+        } catch (error) {
+            console.log(error.message,"[Error message]")
+            dispatch(onGoogleSingInFail(error))
+        }
+   }
+}
+
+const onFacebookLogInStart = () => {
+    return{
+        type: actionTypes.ON_FACEBOOK_LOG_IN_START,
+        error: null
+    }
+}
+
+const onFacebookLogInFail = (error) => {
+    return{
+        type: actionTypes.ON_FACEBOOK_LOG_IN_FAIL,
+        error
+    }
+}
+
+const onFacebookLogInSuccess = (authData) => {
+    return{
+        type: actionTypes.ON_FACEBOOK_LOG_IN_SUCCESS,
+        idToken: authData.credential.idToken,
+        localId: authData.user.uid,
+        profilePicture: authData.user.photoURL,
+        userFullName: authData.user.displayName
+    }
+}
+
+export const onFacebookLogIn = () => {
+    return async dispatch => {
+        dispatch(onFacebookLogInStart());
+        try {
+            if (!firebase.apps.length) {
+                firebase.initializeApp(firebaseConfig);
+            }
+            const provider = await new firebase.auth.FacebookAuthProvider();
+            const response = await firebase.auth().signInWithPopup(provider);
+            dispatch(onFacebookLogInSuccess(response))
+            console.log(response)
+        } catch (error) {
+            console.log(error);
+            dispatch(onFacebookLogInFail())
+        }
+    }
+
+}
+
+
+
+
+
+
+
 
 
 
@@ -123,7 +229,7 @@ export const onSingIn = (email,password) => {
 
 export const onCheckSingInState = () =>{
     return dispatch => {
-        const localId = localStorage.getItem('expiration');
+        const localId = localStorage.getItem('localId');
         if (!localId) {
             dispatch(onLogOut());
         } else {

@@ -1,6 +1,6 @@
 import firebase from 'firebase';
 
-export function firebaseInit(){
+ function firebaseInit(){
     const firebaseConfig = {
         apiKey: "AIzaSyBhypgymYLiYwFNKk2Nldr9Vwl9EmQQjMk",
         authDomain: "koljadi.firebaseapp.com",
@@ -16,8 +16,9 @@ export function firebaseInit(){
 }
 
 export async function firebaseResetPasswordEmail(email){
+    firebaseInit()
     try {
-       const response =  firebase.auth().sendPasswordResetEmail(email);
+       const response =  firebase.auth().sendPasswordResetEmail(email,null);
        console.log(response);
     } catch (error) {
         console.log(error)
@@ -25,3 +26,15 @@ export async function firebaseResetPasswordEmail(email){
     }
    
 }
+
+// export async function firebaseGoogleSingIn(){
+//     firebaseInit();
+//     try {
+//         const provider = await new firebase.auth.GoogleAuthProvider();
+//         const data = await firebase.auth().signInWithPopup(provider);
+//         // console.log(data, "Firebae singin")
+//         // console.log(provider)
+//     } catch (error) {
+//         // console.log(error)
+//     }
+// }

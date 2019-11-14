@@ -8,17 +8,20 @@ import './PasswordReset.css'
 function PasswordReset(props){
     const history = useHistory();
     const [state, setState] = useState(
-      {     isLoading: false,
+      {    
             authInputsElements:{
             email:createInputElement('input', 'text', 'E-mail'
             // ,{autoComplete:'off'}
             ,{}
             ,{minLength:6, maxLength:256, isEmail:true }),
-        }}
+        },
+        isLoading: false,
+    }
     )
-
+        console.log(state)
     const authInputsElements = Object.entries(state.authInputsElements)
         .map( element => {
+            console.log(element)
             const el = element[1];
 
             return <Input
@@ -76,6 +79,7 @@ function PasswordReset(props){
     
                 }
                 setState({
+                    ...state,
                     authInputsElements: updatedAuthElements
                 })
             }
@@ -105,14 +109,15 @@ function PasswordReset(props){
     
     
   async function onResetPasswordHandler(email, valid ){
-        setState({isLoading:true})
+      setState({...state,isLoading:true})
         if (valid) {
-            firebaseInit();
+            console.log(state)
             firebaseResetPasswordEmail(email);
-            setState({isLoading:false})
+            setState({...state,isLoading:false});
             history.push('/auth');
         }
         
+
     }
     console.log(state.authInputsElements.email.validation.valid)
     return(
