@@ -67,7 +67,7 @@ const onSingUpStart = () => {
     }
 }
 
-const onExpiration = expirationTime => {
+const onExpiration = (expirationTime) => {
     return dispatch =>{
         setTimeout(() => {
             dispatch(onLogOut())
@@ -118,11 +118,15 @@ export const onGoogleSingIn = () => {
             }
             const provider = await new firebase.auth.GoogleAuthProvider();
             const response = await firebase.auth().signInWithPopup(provider);
-            console.log(response,'[GOOGLE AUTH DATA]')
-            dispatch(onGoogleSingInSuccess(response))
+            console.log(response,'[GOOGLE AUTH DATA]');
+            dispatch(onGoogleSingInSuccess(response));
+            const expires = new Date( new Date().getTime() + 3600 * 1000 )
+            localStorage.setItem('idToken', response.credential.idToken);
+            localStorage.setItem('localId', response.user.uid);
+            localStorage.setItem('expiration', expires);
         } catch (error) {
-            console.log(error.message,"[Error message]")
-            dispatch(onGoogleSingInFail(error))
+            console.log(error.message,"[Error message]");
+            dispatch(onGoogleSingInFail(error));
         }
    }
 }
@@ -160,11 +164,15 @@ export const onFacebookLogIn = () => {
             }
             const provider = await new firebase.auth.FacebookAuthProvider();
             const response = await firebase.auth().signInWithPopup(provider);
-            dispatch(onFacebookLogInSuccess(response))
+            dispatch(onFacebookLogInSuccess(response));
             console.log(response)
+            const expires = new Date( new Date().getTime() + 3600 * 1000 )
+            localStorage.setItem('idToken', response.credential.idToken);
+            localStorage.setItem('localId', response.user.uid);
+            localStorage.setItem('expiration', expires);
         } catch (error) {
             console.log(error);
-            dispatch(onFacebookLogInFail())
+            dispatch(onFacebookLogInFail(error))
         }
     }
 
